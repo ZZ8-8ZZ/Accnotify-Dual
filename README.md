@@ -91,6 +91,7 @@ curl "https://your-server.com/your-key/这是标题/这是内容?group=测试&so
 ## 🔗 相关链接
 
 - **Bark iOS 客户端：**: <https://github.com/Finb/Bark>
+- **Back-Server：**: <https://github.com/Finb/bark-server>
 - **原项目 Accnotify：**: <https://github.com/trah01/Accnotify> (本项目二开核心基础)
 
 ## 🤝 致谢
@@ -100,14 +101,21 @@ curl "https://your-server.com/your-key/这是标题/这是内容?group=测试&so
 ## ❓ 常见问题（FAQ）
 
 1. **Q：Bark 提示验证失败？**
+
+
    A：检查服务器端口是否通、防火墙是否放行（默认 8080）。虽然支持 HTTP，但建议使用 HTTPS 以确保推送内容的安全性（iOS Bark 客户端支持自定义 HTTP 服务器地址）。
 2. **Q：Android 收不到推送 / 延迟？**
+
+
    A：开启「辅助功能保活」，关闭电池优化，锁定后台。
 3. **Q：Docker 启动失败？**
+
    A：确认端口 8080 未被占用，重启 Docker 服务。
 4. **Q：推送 Key 丢失怎么办？**
+
    A：重装 App 或清除数据重新绑定服务器。
 5. **Q：支持自定义端口吗？**
+
    A：支持，修改 `docker-compose.yml` 中端口映射即可。
 
 ***
