@@ -28,10 +28,26 @@ Accnotify 是基于 **[trah01/Accnotify](https://github.com/trah01/Accnotify)** 
 git clone https://github.com/ZZ8-8ZZ/Accnotify-Dual.git
 # 进入 server 目录
 cd server
+# (可选) 手动构建镜像
+docker-compose build
 # 启动服务
 docker-compose up -d
 # 查看日志
 docker-compose logs -f
+```
+
+部署成功后，访问 `http://your-server-ip:8080`，如果看到以下内容则表示服务正常运行：
+
+```json
+{
+  "code": 200,
+  "data": {
+    "version": "1.0.0"
+  },
+  "message": "pong",
+  "status": "ok",
+  "timestamp": 1234567890
+}
 ```
 
 ### 2. 配置 iOS 端 (Bark)
