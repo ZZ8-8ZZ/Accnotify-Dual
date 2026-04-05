@@ -1,12 +1,9 @@
 # Build stage
 FROM golang:1.21-alpine AS builder
 
-<<<<<<< HEAD
 # Set Go proxy for faster downloads in China
 ENV GOPROXY=https://goproxy.cn,direct
 
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 WORKDIR /app
 
 # Install build dependencies

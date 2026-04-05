@@ -2,22 +2,15 @@ package handler
 
 import (
 	"encoding/json"
-<<<<<<< HEAD
 	"log"
 	"net/http"
 	"strconv"
 	"strings"
-=======
-	"net/http"
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-<<<<<<< HEAD
 	"github.com/accnotify/server/apns"
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 	"github.com/accnotify/server/crypto"
 	"github.com/accnotify/server/model"
 	"github.com/accnotify/server/storage"
@@ -28,26 +21,16 @@ type PushHandler struct {
 	storage *storage.SQLiteStorage
 	hub     *Hub
 	crypto  *crypto.Crypto
-<<<<<<< HEAD
 	apns    *apns.Service
 }
 
 // NewPushHandler creates a new push handler
 func NewPushHandler(storage *storage.SQLiteStorage, hub *Hub, apnsService *apns.Service) *PushHandler {
-=======
-}
-
-// NewPushHandler creates a new push handler
-func NewPushHandler(storage *storage.SQLiteStorage, hub *Hub) *PushHandler {
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 	return &PushHandler{
 		storage: storage,
 		hub:     hub,
 		crypto:  crypto.NewCrypto(),
-<<<<<<< HEAD
 		apns:    apnsService,
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 	}
 }
 
@@ -66,10 +49,7 @@ func (h *PushHandler) HandlePush(c *gin.Context) {
 	device, err := h.storage.GetDeviceByKey(deviceKey)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, model.PushResponse{
-<<<<<<< HEAD
 			Code:    500,
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 			Success: false,
 			Error:   "Database error",
 		})
@@ -77,10 +57,7 @@ func (h *PushHandler) HandlePush(c *gin.Context) {
 	}
 	if device == nil {
 		c.JSON(http.StatusNotFound, model.PushResponse{
-<<<<<<< HEAD
 			Code:    404,
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 			Success: false,
 			Error:   "Device not found",
 		})
@@ -91,10 +68,7 @@ func (h *PushHandler) HandlePush(c *gin.Context) {
 	var req model.PushRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, model.PushResponse{
-<<<<<<< HEAD
 			Code:    400,
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 			Success: false,
 			Error:   "Invalid request body",
 		})
@@ -141,10 +115,7 @@ func (h *PushHandler) HandlePush(c *gin.Context) {
 	// Store message
 	if err := h.storage.CreateMessage(msg); err != nil {
 		c.JSON(http.StatusInternalServerError, model.PushResponse{
-<<<<<<< HEAD
 			Code:    500,
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 			Success: false,
 			Error:   "Failed to store message",
 		})
@@ -175,7 +146,6 @@ func (h *PushHandler) HandlePush(c *gin.Context) {
 		h.storage.MarkMessageDelivered(messageID)
 	}
 
-<<<<<<< HEAD
 	// Send via APNs if device has token and APNs is enabled
 	if h.apns != nil && h.apns.IsEnabled() && device.DeviceToken != "" && device.Platform == "ios" {
 		log.Printf("[APNs] Attempting to send push to device %s (Token: %s...)", deviceKey, device.DeviceToken[:10])
@@ -235,9 +205,6 @@ func (h *PushHandler) HandlePush(c *gin.Context) {
 
 	c.JSON(http.StatusOK, model.PushResponse{
 		Code:      200,
-=======
-	c.JSON(http.StatusOK, model.PushResponse{
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 		Success:   true,
 		MessageID: messageID,
 	})
@@ -255,7 +222,6 @@ func (h *PushHandler) HandleSimplePush(c *gin.Context) {
 		title = "Accnotify"
 	}
 
-<<<<<<< HEAD
 	// Get other parameters from query string (Bark compatibility)
 	sound := c.Query("sound")
 	group := c.Query("group")
@@ -272,8 +238,6 @@ func (h *PushHandler) HandleSimplePush(c *gin.Context) {
 		}
 	}
 
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 	// Convert to POST request
 	c.Set("device_key", deviceKey)
 
@@ -281,10 +245,7 @@ func (h *PushHandler) HandleSimplePush(c *gin.Context) {
 	device, err := h.storage.GetDeviceByKey(deviceKey)
 	if err != nil || device == nil {
 		c.JSON(http.StatusNotFound, model.PushResponse{
-<<<<<<< HEAD
 			Code:    404,
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 			Success: false,
 			Error:   "Device not found",
 		})
@@ -298,14 +259,11 @@ func (h *PushHandler) HandleSimplePush(c *gin.Context) {
 		MessageID: messageID,
 		Title:     title,
 		Body:      body,
-<<<<<<< HEAD
 		Group:     group,
 		Icon:      icon,
 		URL:       url,
 		Sound:     sound,
 		Badge:     badge,
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 	}
 
 	// Encrypt if device has public key
@@ -316,14 +274,11 @@ func (h *PushHandler) HandleSimplePush(c *gin.Context) {
 			payload := map[string]interface{}{
 				"title": title,
 				"body":  body,
-<<<<<<< HEAD
 				"group": group,
 				"icon":  icon,
 				"url":   url,
 				"sound": sound,
 				"badge": badge,
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 			}
 			payloadBytes, _ := json.Marshal(payload)
 			encryptedContent, _ = h.crypto.EncryptMessage(publicKey, payloadBytes)
@@ -333,10 +288,7 @@ func (h *PushHandler) HandleSimplePush(c *gin.Context) {
 
 	if err := h.storage.CreateMessage(msg); err != nil {
 		c.JSON(http.StatusInternalServerError, model.PushResponse{
-<<<<<<< HEAD
 			Code:    500,
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 			Success: false,
 			Error:   "Failed to store message",
 		})
@@ -350,14 +302,11 @@ func (h *PushHandler) HandleSimplePush(c *gin.Context) {
 		Data: map[string]interface{}{
 			"title":             title,
 			"body":              body,
-<<<<<<< HEAD
 			"group":             group,
 			"icon":              icon,
 			"url":               url,
 			"sound":             sound,
 			"badge":             badge,
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 			"encrypted_content": encryptedContent,
 		},
 	}
@@ -367,7 +316,6 @@ func (h *PushHandler) HandleSimplePush(c *gin.Context) {
 		h.storage.MarkMessageDelivered(messageID)
 	}
 
-<<<<<<< HEAD
 	// Send via APNs if device has token and APNs is enabled
 	if h.apns != nil && h.apns.IsEnabled() && device.DeviceToken != "" && device.Platform == "ios" {
 		log.Printf("[APNs] Attempting to send simple push to device %s (Token: %s...)", deviceKey, device.DeviceToken[:10])
@@ -424,15 +372,11 @@ func (h *PushHandler) HandleSimplePush(c *gin.Context) {
 
 	c.JSON(http.StatusOK, model.PushResponse{
 		Code:      200,
-=======
-	c.JSON(http.StatusOK, model.PushResponse{
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 		Success:   true,
 		MessageID: messageID,
 	})
 }
 
-<<<<<<< HEAD
 // HandleRegister handles POST/GET /register
 func (h *PushHandler) HandleRegister(c *gin.Context) {
 	var req model.RegisterRequest
@@ -471,27 +415,15 @@ func (h *PushHandler) HandleRegister(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"success": false,
 			"error":   "Missing device key",
-=======
-// HandleRegister handles POST /register
-func (h *PushHandler) HandleRegister(c *gin.Context) {
-	var req model.RegisterRequest
-	if err := c.ShouldBindJSON(&req); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"success": false,
-			"error":   "Invalid request body",
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 		})
 		return
 	}
 
-<<<<<<< HEAD
 	// For Bark compatibility, if platform is not specified but devicetoken is present, assume ios
 	if req.Platform == "" && req.DeviceToken != "" {
 		req.Platform = "ios"
 	}
 
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 	// Check if device exists
 	device, err := h.storage.GetDeviceByKey(req.DeviceKey)
 	if err != nil {
@@ -503,14 +435,10 @@ func (h *PushHandler) HandleRegister(c *gin.Context) {
 	}
 
 	if device != nil {
-<<<<<<< HEAD
 		// Update device information
 		updates := false
 		
 		// Update public key if provided
-=======
-		// Update public key
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 		if req.PublicKey != "" {
 			if err := h.storage.UpdateDevicePublicKey(req.DeviceKey, req.PublicKey); err != nil {
 				c.JSON(http.StatusInternalServerError, gin.H{
@@ -519,7 +447,6 @@ func (h *PushHandler) HandleRegister(c *gin.Context) {
 				})
 				return
 			}
-<<<<<<< HEAD
 			updates = true
 		}
 		
@@ -572,30 +499,17 @@ func (h *PushHandler) HandleRegister(c *gin.Context) {
 				"key":        req.DeviceKey,
 				"device_key": req.DeviceKey,
 			},
-=======
-		}
-		c.JSON(http.StatusOK, gin.H{
-			"success":    true,
-			"device_key": req.DeviceKey,
-			"message":    "Device updated",
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 		})
 		return
 	}
 
 	// Create new device
 	newDevice := &model.Device{
-<<<<<<< HEAD
 		DeviceKey:   req.DeviceKey,
 		PublicKey:   req.PublicKey,
 		Name:        req.Name,
 		DeviceToken: req.DeviceToken,
 		Platform:    req.Platform,
-=======
-		DeviceKey: req.DeviceKey,
-		PublicKey: req.PublicKey,
-		Name:      req.Name,
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 	}
 
 	if err := h.storage.CreateDevice(newDevice); err != nil {
@@ -606,7 +520,6 @@ func (h *PushHandler) HandleRegister(c *gin.Context) {
 		return
 	}
 
-<<<<<<< HEAD
 	// Bark-compatible response format
 	c.JSON(http.StatusOK, gin.H{
 		"code":    200,
@@ -628,19 +541,6 @@ func (h *PushHandler) HandleHealth(c *gin.Context) {
 		"data": gin.H{
 			"version": "1.0.0",
 		},
-=======
-	c.JSON(http.StatusOK, gin.H{
-		"success":    true,
-		"device_key": req.DeviceKey,
-		"message":    "Device registered",
-	})
-}
-
-// HandleHealth handles GET /health
-func (h *PushHandler) HandleHealth(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{
-		"status":    "ok",
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 		"timestamp": time.Now().Unix(),
 	})
 }

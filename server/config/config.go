@@ -22,7 +22,6 @@ type Config struct {
 	EnableHTTPS bool
 	CertFile    string
 	KeyFile     string
-<<<<<<< HEAD
 
 	// APNs settings
 	APNsEnabled     bool
@@ -32,8 +31,6 @@ type Config struct {
 	APNsTeamID      string
 	APNsTopic       string
 	APNsDevelopment bool
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 }
 
 // DefaultConfig returns default configuration
@@ -78,7 +75,6 @@ func LoadFromEnv() *Config {
 		cfg.KeyFile = os.Getenv("ACCNOTIFY_KEY_FILE")
 	}
 
-<<<<<<< HEAD
 	// APNs settings
 	if os.Getenv("ACCNOTIFY_APNS_ENABLED") == "true" {
 		cfg.APNsEnabled = true
@@ -90,7 +86,5 @@ func LoadFromEnv() *Config {
 		cfg.APNsDevelopment = os.Getenv("ACCNOTIFY_APNS_DEVELOPMENT") == "true"
 	}
 
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 	return cfg
 }

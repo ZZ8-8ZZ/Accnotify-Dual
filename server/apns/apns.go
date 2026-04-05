@@ -147,14 +147,6 @@ func (s *Service) Push(deviceToken string, title, body string, options map[strin
 		p.Custom("icon", icon)
 	}
 
-	// Add level if provided (Bark compatibility)
-	if level, ok := options["level"].(string); ok && level != "" {
-		p.Custom("level", level)
-		if level == "critical" {
-			p.CriticalAlert(sound, 1.0)
-		}
-	}
-
 	// Create notification
 	notification := &apns2.Notification{
 		DeviceToken: deviceToken,

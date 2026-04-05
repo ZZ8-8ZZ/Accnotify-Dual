@@ -6,7 +6,6 @@ import (
 
 // Device represents a registered device
 type Device struct {
-<<<<<<< HEAD
 	ID          int64     `json:"id"`
 	DeviceKey   string    `json:"device_key"`
 	PublicKey   string    `json:"public_key,omitempty"`
@@ -15,14 +14,6 @@ type Device struct {
 	Platform    string    `json:"platform,omitempty"`      // "android" or "ios"
 	CreatedAt   time.Time `json:"created_at"`
 	LastSeen    time.Time `json:"last_seen"`
-=======
-	ID        int64     `json:"id"`
-	DeviceKey string    `json:"device_key"`
-	PublicKey string    `json:"public_key,omitempty"`
-	Name      string    `json:"name,omitempty"`
-	CreatedAt time.Time `json:"created_at"`
-	LastSeen  time.Time `json:"last_seen"`
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 }
 
 // Message represents a notification message
@@ -73,25 +64,16 @@ const (
 
 // RegisterRequest represents a device registration request
 type RegisterRequest struct {
-<<<<<<< HEAD
 	DeviceKey   string `json:"device_key"`
 	PublicKey   string `json:"public_key"`
 	Name        string `json:"name,omitempty"`
 	DeviceToken string `json:"devicetoken,omitempty"` // For APNs support (Bark format)
 	Platform    string `json:"platform,omitempty"`    // "android" or "ios"
-=======
-	DeviceKey string `json:"device_key"`
-	PublicKey string `json:"public_key"`
-	Name      string `json:"name,omitempty"`
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 }
 
 // PushResponse represents the response after pushing a message
 type PushResponse struct {
-<<<<<<< HEAD
 	Code      int    `json:"code,omitempty"` // For Bark compatibility
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 	Success   bool   `json:"success"`
 	MessageID string `json:"message_id,omitempty"`
 	Error     string `json:"error,omitempty"`

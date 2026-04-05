@@ -45,11 +45,8 @@ func (s *SQLiteStorage) initTables() error {
 			device_key TEXT UNIQUE NOT NULL,
 			public_key TEXT,
 			name TEXT,
-<<<<<<< HEAD
 			device_token TEXT,
 			platform TEXT,
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 			created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 			last_seen DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -93,17 +90,10 @@ func (s *SQLiteStorage) Close() error {
 func (s *SQLiteStorage) GetDeviceByKey(deviceKey string) (*model.Device, error) {
 	device := &model.Device{}
 	err := s.db.QueryRow(
-<<<<<<< HEAD
 		`SELECT id, device_key, public_key, name, device_token, platform, created_at, last_seen 
 		 FROM devices WHERE device_key = ?`,
 		deviceKey,
 	).Scan(&device.ID, &device.DeviceKey, &device.PublicKey, &device.Name, &device.DeviceToken, &device.Platform, &device.CreatedAt, &device.LastSeen)
-=======
-		`SELECT id, device_key, public_key, name, created_at, last_seen 
-		 FROM devices WHERE device_key = ?`,
-		deviceKey,
-	).Scan(&device.ID, &device.DeviceKey, &device.PublicKey, &device.Name, &device.CreatedAt, &device.LastSeen)
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 
 	if err == sql.ErrNoRows {
 		return nil, nil
@@ -117,15 +107,9 @@ func (s *SQLiteStorage) GetDeviceByKey(deviceKey string) (*model.Device, error) 
 // CreateDevice creates a new device
 func (s *SQLiteStorage) CreateDevice(device *model.Device) error {
 	result, err := s.db.Exec(
-<<<<<<< HEAD
 		`INSERT INTO devices (device_key, public_key, name, device_token, platform, created_at, last_seen) 
 		 VALUES (?, ?, ?, ?, ?, ?, ?)`,
 		device.DeviceKey, device.PublicKey, device.Name, device.DeviceToken, device.Platform, time.Now(), time.Now(),
-=======
-		`INSERT INTO devices (device_key, public_key, name, created_at, last_seen) 
-		 VALUES (?, ?, ?, ?, ?)`,
-		device.DeviceKey, device.PublicKey, device.Name, time.Now(), time.Now(),
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 	)
 	if err != nil {
 		return err
@@ -148,7 +132,6 @@ func (s *SQLiteStorage) UpdateDevicePublicKey(deviceKey, publicKey string) error
 	return err
 }
 
-<<<<<<< HEAD
 // UpdateDeviceToken updates the device token for APNs
 func (s *SQLiteStorage) UpdateDeviceToken(deviceKey, deviceToken string) error {
 	_, err := s.db.Exec(
@@ -176,8 +159,6 @@ func (s *SQLiteStorage) UpdateDeviceName(deviceKey, name string) error {
 	return err
 }
 
-=======
->>>>>>> 287a33766748e36d05bf23587ea969d835085abe
 // UpdateDeviceLastSeen updates the last seen timestamp
 func (s *SQLiteStorage) UpdateDeviceLastSeen(deviceKey string) error {
 	_, err := s.db.Exec(
