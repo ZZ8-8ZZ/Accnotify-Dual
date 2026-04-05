@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Clean Fluent Colors -->
+    <color name="clean_bg">#F5F7F8</color>
+    <color name="clean_card_bg">#FFFFFF</color>
+    <color name="clean_text_primary">#1F2937</color> <!-- Dark Grey -->
+    <color name="clean_text_secondary">#6B7280</color> <!-- Medium Grey -->
+    <color name="clean_divider">#E5E7EB</color>
+    
+    <color name="clean_primary">#005FB8</color> <!-- Fluent Blue -->
+    <color name="clean_primary_pressed">#004C94</color>
+    
+    <!-- Status Colors -->
+    <color name="status_clean_disconnected_bg">#E0F2F1</color> <!-- Light Teal -->
+    <color name="status_clean_disconnected_text">#00695C</color>
+    <color name="status_clean_connected_bg">#E8F5E9</color> <!-- Light Green -->
+    <color name="status_clean_connected_text">#1B5E20</color>
+    
+    <color name="input_bg">#F9FAFB</color>
+    <color name="input_stroke">#D1D5DB</color>
+</resources>

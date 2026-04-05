@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Clean Fluent Theme -->
+    <style name="Theme.Accnotify" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Color Scheme -->
+        <item name="colorPrimary">@color/clean_primary</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        
+        <item name="android:colorBackground">@color/clean_bg</item>
+        <item name="colorSurface">@color/clean_card_bg</item>
+        <item name="colorOnSurface">@color/clean_text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/clean_text_secondary</item>
+        
+        <!-- Status Bar -->
+        <item name="android:statusBarColor">@color/clean_bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Navigation Bar -->
+        <item name="android:navigationBarColor">@color/clean_bg</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+
+    <!-- Toolbar Style -->
+    <style name="Theme.Accnotify.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/surface</item>
+        <item name="titleTextColor">@color/text_primary</item>
+    </style>
+
+    <!-- iOS-Style Bottom Navigation -->
+    <style name="Theme.Accnotify.BottomNav" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">@color/bottom_nav_background</item>
+        <item name="itemIconTint">@color/bottom_nav_selector</item>
+        <item name="itemTextColor">@color/bottom_nav_selector</item>
+        <item name="itemActiveIndicatorStyle">@style/App.BottomNavIndicator</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="itemPaddingTop">8dp</item>
+        <item name="itemPaddingBottom">8dp</item>
+    </style>
+
+    <!-- Candy-style Pill Indicator for Bottom Navigation -->
+    <style name="App.BottomNavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:width">64dp</item>
+        <item name="android:height">36dp</item>
+        <item name="android:color">@color/bottom_nav_indicator_alpha</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.BottomNavIndicator</item>
+    </style>
+
+    <style name="ShapeAppearance.BottomNavIndicator" parent="ShapeAppearance.Material3.Corner.Full">
+        <item name="cornerSize">18dp</item>
+    </style>
+
+</resources>
+

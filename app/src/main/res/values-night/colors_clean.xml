@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Clean Fluent Colors (Dark) -->
+    <color name="clean_bg">#000000</color>
+    <color name="clean_card_bg">#1C1C1E</color>
+    <color name="clean_text_primary">#F3F4F6</color>
+    <color name="clean_text_secondary">#9CA3AF</color>
+    <color name="clean_divider">#2C2C2E</color>
+    
+    <color name="clean_primary">#007AFF</color> <!-- System Blue, good contrast with white text -->
+    <color name="clean_primary_pressed">#0062CC</color>
+    
+    <color name="status_clean_disconnected_bg">#1C2A2F</color>
+    <color name="status_clean_disconnected_text">#80CBC4</color>
+    <color name="status_clean_connected_bg">#1B2E21</color>
+    <color name="status_clean_connected_text">#A5D6A7</color>
+    
+    <color name="input_bg">#1C1C1E</color>
+    <color name="input_stroke">#3A3A3C</color>
+</resources>

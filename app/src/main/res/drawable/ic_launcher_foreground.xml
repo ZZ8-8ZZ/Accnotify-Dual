@@ -1,0 +1,43 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- 
+      AccNotify Icon - Retro / 8-Bit Style
+      Viewport: 108x108
+      Base Grid: 24x24
+      Scale: 2.5x to fit adaptive icon safe zone
+    -->
+    <group
+        android:translateX="24"
+        android:translateY="24"
+        android:scaleX="2.5"
+        android:scaleY="2.5">
+
+        <!-- 白色主体像素块 (White Body Blocks) -->
+        <!-- 结构调整以配合中心黄色块: 
+             Top(14,2), Neck(12,6), 
+             LeftWing(6,10), RightWing(14,10), 
+             LowerBody(8,14) 
+        -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="
+                M14,2 h4 v4 h-4 z 
+                M12,6 h4 v4 h-4 z 
+                M6,10 h4 v4 h-4 z 
+                M14,10 h4 v4 h-4 z 
+                M8,14 h4 v4 h-4 z" />
+
+        <!-- 金色能量像素块 (Yellow Energy Blocks) -->
+        <!-- Core(10,10) - 绝对居中, Tail(6,18) -->
+        <path
+            android:fillColor="#FFC107"
+            android:pathData="
+                M10,10 h4 v4 h-4 z 
+                M6,18 h4 v4 h-4 z" />
+
+    </group>
+</vector>

@@ -1,0 +1,48 @@
+<<<<<<< HEAD
+services:
+  accnotify:
+    build: .
+    image: accnotify-server:latest
+=======
+version: '3.8'
+
+services:
+  accnotify:
+    image: trah01/accnotify-server:latest
+>>>>>>> 287a33766748e36d05bf23587ea969d835085abe
+    container_name: accnotify-server
+    ports:
+      - "8080:8080"
+    volumes:
+      - accnotify-data:/app/data
+<<<<<<< HEAD
+      # APNs support using Bark's official certificate
+      - ../AuthKey_LH4T9V5U4R_5U8LBRXG3A.p8:/secrets/apns_key.p8:ro
+=======
+>>>>>>> 287a33766748e36d05bf23587ea969d835085abe
+    environment:
+      - ACCNOTIFY_HOST=0.0.0.0
+      - ACCNOTIFY_PORT=8080
+      - ACCNOTIFY_DB_PATH=/app/data/accnotify.db
+      - ACCNOTIFY_WS_PING_INTERVAL=30
+<<<<<<< HEAD
+      # APNs Configuration (iOS/Bark compatibility)
+      - ACCNOTIFY_APNS_ENABLED=true
+      - ACCNOTIFY_APNS_TOPIC=me.fin.bark
+      - ACCNOTIFY_APNS_KEY_ID=LH4T9V5U4R
+      - ACCNOTIFY_APNS_TEAM_ID=5U8LBRXG3A
+      - ACCNOTIFY_APNS_KEY_FILE=/secrets/apns_key.p8
+      - ACCNOTIFY_APNS_DEVELOPMENT=false
+=======
+>>>>>>> 287a33766748e36d05bf23587ea969d835085abe
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/health" ]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+volumes:
+  accnotify-data:
+    driver: local

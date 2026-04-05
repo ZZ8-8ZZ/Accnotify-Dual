@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Clean Fluent Theme (Dark) -->
+    <style name="Theme.Accnotify" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Color Scheme -->
+        <item name="colorPrimary">@color/clean_primary</item>
+        <item name="colorOnPrimary">#000000</item>
+        
+        <item name="android:colorBackground">@color/clean_bg</item>
+        <item name="colorSurface">@color/clean_card_bg</item>
+        <item name="colorOnSurface">@color/clean_text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/clean_text_secondary</item>
+        
+        <!-- Status Bar -->
+        <item name="android:statusBarColor">@color/clean_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Navigation Bar -->
+        <item name="android:navigationBarColor">@color/clean_bg</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+
+    <!-- Toolbar Style (Dark) -->
+    <style name="Theme.Accnotify.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/surface</item>
+        <item name="titleTextColor">@color/text_primary</item>
+    </style>
+
+    <!-- iOS-Style Bottom Navigation (Dark) -->
+    <style name="Theme.Accnotify.BottomNav" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">@color/bottom_nav_background</item>
+        <item name="itemIconTint">@color/bottom_nav_selector</item>
+        <item name="itemTextColor">@color/bottom_nav_selector</item>
+        <item name="itemActiveIndicatorStyle">@null</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="itemPaddingTop">8dp</item>
+        <item name="itemPaddingBottom">8dp</item>
+    </style>
+</resources>

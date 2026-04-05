@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors - iOS Blue -->
+    <color name="primary">#0A84FF</color>
+    <color name="primary_variant">#0056B3</color>
+    <color name="on_primary">#FFFFFF</color>
+
+    <!-- Accent - iOS Blue (Dark Mode) -->
+    <color name="accent">#0A84FF</color>
+    <color name="accent_light">#1C3A5F</color>
+
+    <!-- Secondary Colors -->
+    <color name="secondary">#E5E5E7</color>
+    <color name="secondary_variant">#8E8E93</color>
+    <color name="on_secondary">#000000</color>
+
+    <!-- Background - Clean dark -->
+    <color name="background">@color/clean_bg</color>
+    <color name="on_background">#FFFFFF</color>
+
+    <!-- Surface - Card background -->
+    <color name="surface">@color/clean_card_bg</color>
+    <color name="on_surface">#FFFFFF</color>
+
+
+    <!-- Card -->
+    <color name="card_background">#152238</color>
+    <color name="card_stroke">#1E3A5C</color>
+
+    <!-- Status Colors - iOS System Colors (Dark) -->
+    <color name="status_connected">#30D158</color>
+    <color name="status_disconnected">#8E8E93</color>
+    <color name="status_connecting">#FF9F0A</color>
+    <color name="status_error">#FF453A</color>
+
+    <!-- Button Colors -->
+    <color name="button_primary">#0A84FF</color>
+    <color name="button_on_primary">#FFFFFF</color>
+    <color name="button_tonal">#1C3A5F</color>
+    <color name="button_on_tonal">#5AC8FA</color>
+    <color name="button_danger_text">#FF453A</color>
+
+    <!-- Text - iOS Label Colors (Dark) -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#8E8E93</color>
+    <color name="text_hint">#636366</color>
+    <color name="text_link">#0A84FF</color>
+
+    <!-- Divider -->
+    <color name="divider">#1E3A5C</color>
+
+    <!-- Status Bar -->
+    <color name="status_bar">#0A1628</color>
+
+    <!-- Bottom Navigation - Clean Style -->
+    <color name="bottom_nav_background">@color/clean_card_bg</color>
+    <color name="bottom_nav_selected">@color/clean_primary</color>
+    <color name="bottom_nav_unselected">@color/clean_text_secondary</color>
+    <color name="bottom_nav_indicator">@color/clean_primary</color>
+    <color name="bottom_nav_indicator_alpha">#3360CDFF</color>
+
+
+    <!-- Register Button (Dark Mode) -->
+    <color name="button_register_bg">#1C3A5F</color>
+    <color name="button_register_text">#5AC8FA</color>
+</resources>
